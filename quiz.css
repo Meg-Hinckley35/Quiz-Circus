@@ -1,0 +1,21 @@
+.body {
+    background-color: rgb(251, 245, 236);
+
+}
+
+.header {
+    font-family: 'Lora', serif;
+    background-color: #569cf7;
+    font: 50%, rgb(34, 34, 34), bold;
+
+}
+
+#countdown {
+    display: block;
+}
+
+#start {
+    background-color:rgb(193, 135, 247);
+    font: white;
+}
+
