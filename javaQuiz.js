@@ -1,12 +1,9 @@
 var quizContainer = document.getElementById('quiz');
-var resultsContainer = document.getElementById('results');
-var startButton = document.getElementById('start');
-var submitButton = document.getElementById('submit');
 var timer = document.querySelector('.timer');
 
 
 function buildQuiz() {
-    const ouput = [];
+    const output = [];
     myQuestions.forEach(
         (currentQuestion) => {
             const answers = [a, b, c, d];
@@ -92,7 +89,7 @@ const myQuestions = [
 
 
 var timerEl = document.getElementById('countdown');
-var clockEl = documenet.getElementById('clock');
+var clockEl = document.getElementById('clock');
 
 var message = "Time's Up."
 
