@@ -1,4 +1,4 @@
-.body {
+ .body {
     background-color: rgb(251, 245, 236);
 
 }
@@ -10,9 +10,34 @@
 
 }
 
-#countdown {
-    display: block;
+#countdown ul {
+    list-style: none;
 }
+
+#countdown ul, #countdown li {
+    margin: 0;
+    padding: 0;
+}
+
+#countdown-stats {
+    position: fixed;
+    top: 15px;
+    right: 10px;
+    font-size: 12px;
+    color: black;
+    z-index: 1;
+}
+
+ul {
+    display: block;
+    list-style-type: circle;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
 
 #start {
     background-color:rgb(193, 135, 247);
