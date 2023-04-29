@@ -1,92 +1,73 @@
-console.log("Testing line to check function");
+const question = document.getElementById("question");
+const choices = Array.from(document.getElementByClassName("choice-text"));
 
-// var quizContainer = document.getElementById('quiz');
-// var timer = document.querySelector('.timer');
+let currentQuestion = {};
+let correctAnswers = true;
+let score = 0;
+let questionCounter = 0;
+let availableQuestions = [];
+
+let questions = [
+    {
+        question: "Commonly used data types DO NOT include:",
+        choice1: 'strings',
+        choice2: 'booleans',
+        choice3: 'alerts',
+        choice4: 'numbers',
+        correctAnswer: 3
+    },
+    {
+        question: "The condition in an if / else statement is enclosed with ________.",
+        choice1: 'quotes',
+        choice2: 'curly brackets',
+        choice3: 'parenthesis',
+        choice4: 'square brackets',
+        answer: 2
+    },
+    {
+        question: "Arrays in JavaScript can be used to store __________.",
+        choice1: 'numbers and strings',
+        choice2: 'other arrays',
+        choice3: 'booleans',
+        choice4: 'all of the above',
+        answer: 4
+    },
+    {
+        question: "String values must be enclosed within _________ when being assigned to variables.",
+        choice1: 'commas',
+        choice2: 'curly brackets',
+        choice3: 'quotes',
+        choice4: 'parenthesis',
+        answer: 3
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choice1: 'JavaScript',
+        choice2: 'terminal/bash',
+        choice3: 'for loops',
+        choice4: 'console.log',
+        correctAnswer: 4
+    }, 
+]
 
 
-// function buildQuiz() {
-//     const output = [];
-//     myQuestions.forEach(
-//         (currentQuestion) => {
-//             const answers = [a, b, c, d];
-//             for (letter in currentQuestion.answers) {
-//                 answers.push(
-//                     <label>
-//                         <input type="radio" name="questions${questionNumber}" value="${letter}"></input>
-//                         ${letter} :
-//                         ${currentQuestion.answers[letter]}
-//                     </label>
-//                 );
-//             }
-//             output.push(
-//                 <div class="question"> ${currentQuestion} </div>,
-//             <div class="answers"> ${answers.join('')} </div>,
-//         );
-// }
-//     );
-// quizContainer.innerHTML = output.join('');
-// };
+// Constants
+const CORRECT_POINTS = 10;
+const MAX_QUESTIONS = 5;
 
-// function showResults() { };
+startQuiz = () => {
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questions];
 
-// buildQuiz();
+}
+
 
 // startButton.addEventListener('click', startQuiz);
 // startQuiz() {
 //     timer = 120;
 // };
-// const myQuestions = [
-//     {
-//         question: "Commonly used data types DO NOT include:",
-//         answers: {
-//             a: 'strings',
-//             b: 'booleans',
-//             c: 'alerts',
-//             d: 'numbers'
-//         },
-//         correctAnswer: "c"
-//     },
-//     {
-//         question: "The condition in an if / else statement is enclosed with ________.",
-//         answers: {
-//             a: 'quotes',
-//             b: 'curly brackets',
-//             c: 'parenthesis',
-//             d: 'square brackets'
-//         },
-//         correctAnswer: "b"
-//     },
-//     {
-//         question: "Arrays in JavaScript can be used to store __________.",
-//         answers: {
-//             a: 'numbers and strings',
-//             b: 'other arrays',
-//             c: 'booleans',
-//             d: 'all of the above'
-//         },
-//         correctAnswer: "d"
-//     },
-//     {
-//         question: "String values must be enclosed within _________ when being assigned to variables.",
-//         answers: {
-//             a: 'commas',
-//             b: 'curly brackets',
-//             c: 'quotes',
-//             d: 'parenthesis'
-//         },
-//         correctAnswer: "c"
-//     },
-//     {
-//         question: "A very useful tool used during developement and debugging for printing content to the debugger is:",
-//         answers: {
-//             a: 'JavaScript',
-//             b: 'terminal/bash',
-//             c: 'for loops',
-//             d: 'console.log'
-//         },
-//         correctAnswer: "d"
-//     },
-// ];
+
 
 
 
