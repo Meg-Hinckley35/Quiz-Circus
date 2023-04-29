@@ -1,3 +1,5 @@
+console.log("Testing line to check function");
+
 // var quizContainer = document.getElementById('quiz');
 // var timer = document.querySelector('.timer');
 
