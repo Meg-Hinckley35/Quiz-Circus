@@ -71,30 +71,42 @@ getNextQuestion = () =>{
         //go to end page
         return window.location.assign("/end.html");
     }
+    // this will run through the questions based on their location in our question array
     questionCounter++;
    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
    currentQuestion = availableQuestions[questionIndex];
    question.innerText = currentQuestion.question;
     
+   // this will loop through the answer choices based on their given number
    choices.forEach( choice => {
     const number = choice.dataset['number'];
     choice.innerText = currentQuestion['choice' + number]; 
    });
    // gets rid of old question and get a new one
    availableQuestions.splice(questionIndex, 1);
-
+   // correct answers are given the value of true
    correctAnswers = true;
 };
-
+// this code will listen for a click on the choices
 choices.forEach(choice => {
     choice.addEventListener("click", e => {
         if(!correctAnswers) return;
-
+        // here we target what is clicked and read its data number
         correctAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
-        console.log(selectedAnswer);
+        // this code will give a class of 'correct' if the data number is true and 'incorrect' if the data number is false
+        const classToApply = selectedAnswer == currentQuestion.answer ? 'correct': 'incorrect';
+        // we are adding the class here    
+        selectedChoice.parentElement.classList.add(classToApply);
+
+        setTimeout( () =>{
+            // now we remove the class after 1000 milliseconds
+        selectedChoice.parentElement.classList.remove(classToApply);
         getNextQuestion();
+        }, 1000);
+        
+       
 
     });
 });
