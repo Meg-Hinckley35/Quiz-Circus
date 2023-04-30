@@ -1,12 +1,13 @@
 const question = document.getElementById("question");
-const choices = Array.from(document.getElementByClassName("choice-text"));
+const choices = Array.from(document.getElementsByClassName("choice-text"));
 
 let currentQuestion = {};
-let correctAnswers = true;
+let correctAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
+// Making a questions array to hold all of our questions and answers.
 let questions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -55,18 +56,52 @@ let questions = [
 const CORRECT_POINTS = 10;
 const MAX_QUESTIONS = 5;
 
+// Game function, start with first question, start with 0 score, and set questions array.
 startQuiz = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
+    console.log(availableQuestions);
+    getNextQuestion();
+};
 
-}
+// creating a function to call the next question
+getNextQuestion = () =>{
+    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+        //go to end page
+        return window.location.assign("/end.html");
+    }
+    questionCounter++;
+   const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+   currentQuestion = availableQuestions[questionIndex];
+   question.innerText = currentQuestion.question;
+    
+   choices.forEach( choice => {
+    const number = choice.dataset['number'];
+    choice.innerText = currentQuestion['choice' + number]; 
+   });
+   // gets rid of old question and get a new one
+   availableQuestions.splice(questionIndex, 1);
+
+   correctAnswers = true;
+};
+
+choices.forEach(choice => {
+    choice.addEventListener("click", e => {
+        if(!correctAnswers) return;
+
+        correctAnswers = false;
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dataset['number'];
+        console.log(selectedAnswer);
+        getNextQuestion();
+
+    });
+});
+
+startQuiz();
 
 
-// startButton.addEventListener('click', startQuiz);
-// startQuiz() {
-//     timer = 120;
-// };
 
 
 
