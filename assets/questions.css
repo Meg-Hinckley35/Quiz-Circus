@@ -30,3 +30,19 @@
 .incorrect {
     background-color: #dc3545;
 }
+
+/* Heads Up Display*/
+
+#hud {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hud-prefix {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.hud-text {
+    text-align: center;
+}
