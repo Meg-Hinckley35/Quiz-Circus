@@ -73,8 +73,11 @@ getNextQuestion = () =>{
         //go to end page
         return window.location.assign("/end.html");
     }
-    // this will run through the questions based on their location in our question array
+    // this will tell us what question number we are on out of how many
     questionCounter++;
+    questionCounterText.innerText = questionCounter + "/" + MAX_QUESTIONS;
+
+   // this will run through the questions based on their location in our question array 
    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
    currentQuestion = availableQuestions[questionIndex];
    question.innerText = currentQuestion.question;
@@ -97,8 +100,14 @@ choices.forEach(choice => {
         correctAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
+
         // this code will give a class of 'correct' if the data number is true and 'incorrect' if the data number is false
         const classToApply = selectedAnswer == currentQuestion.answer ? 'correct': 'incorrect';
+            // this will give points to correct answers
+            if(classToApply === 'correct') {
+                incrementScore(CORRECT_POINTS);
+            };
+
         // we are adding the class here    
         selectedChoice.parentElement.classList.add(classToApply);
 
@@ -108,7 +117,11 @@ choices.forEach(choice => {
         getNextQuestion();
         }, 1000);
         
-       
+        // this will count and keep track of our score
+       incrementScore = num => {
+        score += num;
+        scoreText.innerText = score;
+       };
 
     });
 });
